@@ -42,6 +42,11 @@ resource "azurerm_linux_web_app" "webapp" {
   https_only            = true
   site_config { 
     minimum_tls_version = "1.2"
+    app_command_line = "npm start"
+  }
+
+  app_settings = {
+    "START_UP" = "npm start"
   }
 }
 
@@ -53,3 +58,4 @@ resource "azurerm_app_service_source_control" "sourcecontrol" {
   use_manual_integration = true
   use_mercurial      = false
 }
+
